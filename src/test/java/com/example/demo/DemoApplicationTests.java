@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.mapper.UserMapper;
-import com.example.demo.model.User;
+import com.example.demo.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
