@@ -14,8 +14,6 @@ import java.util.Map;
 @SpringBootTest
 public class AutoGeneratorTests {
 
-    private static final String PROJECT_DIR = System.getProperty("user.dir") + "/learn-mybatisplus/";
-
     @Test
     public void test() {
         generate("user", "mobile");
@@ -27,8 +25,8 @@ public class AutoGeneratorTests {
 
         // 全局配置
         GlobalConfig global = new GlobalConfig();
-//        global.setOutputDir(PROJECT_DIR + "src/main/java");
-        global.setOutputDir("d:/codeGen");
+        global.setOutputDir(System.getProperty("user.dir") + "/src/main/java");
+//        global.setOutputDir("d:/codeGen");
         global.setAuthor("gexc");
         global.setOpen(false);
         //默认不覆盖，如果文件存在，将不会再生成，配置true就是覆盖
