@@ -1,18 +1,14 @@
 package com.example.demo;
 
-import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
-import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @SpringBootTest
@@ -31,7 +27,8 @@ public class AutoGeneratorTests {
 
         // 全局配置
         GlobalConfig global = new GlobalConfig();
-        global.setOutputDir(PROJECT_DIR + "src/main/java");
+//        global.setOutputDir(PROJECT_DIR + "src/main/java");
+        global.setOutputDir("d:/codeGen");
         global.setAuthor("gexc");
         global.setOpen(false);
         //默认不覆盖，如果文件存在，将不会再生成，配置true就是覆盖
@@ -50,7 +47,7 @@ public class AutoGeneratorTests {
 
         // 包配置
         PackageConfig pkg = new PackageConfig();
-        pkg.setModuleName("db");
+        pkg.setModuleName("bmcp");
         pkg.setParent("com.example.demo");
         generator.setPackageInfo(pkg);
 
@@ -58,15 +55,15 @@ public class AutoGeneratorTests {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        strategy.setSuperEntityClass("com.baomidou.mybatisplus.samples.generator.common.BaseEntity");
+        strategy.setInclude(tables);
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
-        strategy.setSuperControllerClass("com.baomidou.mybatisplus.samples.generator.common.BaseController");
-        strategy.setInclude(tables);
-        strategy.setSuperEntityColumns("id");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pkg.getModuleName() + "_");
         strategy.setEntityTableFieldAnnotationEnable(true);
+//        strategy.setSuperEntityClass("com.baomidou.mybatisplus.samples.generator.common.BaseEntity");
+//        strategy.setSuperEntityColumns("id");
+//        strategy.setSuperControllerClass("com.baomidou.mybatisplus.samples.generator.common.BaseController");
         generator.setStrategy(strategy);
 
         // 选择 freemarker 引擎需要指定如下加，注意 pom 依赖必须有！
